@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.AnalysisFragment"
+    android:background="@color/white"
+    android:paddingStart="25dp"
+    android:paddingEnd="25dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppinsbold"
+            android:textAlignment="center"
+            android:text="@string/analisis_bahan"
+            android:textColor="@color/slightly_blue"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:gravity="center_horizontal"
+            android:text="@string/sambutan_fragment"
+
+            android:layout_marginTop="5dp"
+            />
+
+        <EditText
+            android:id="@+id/etIngredients"
+            android:layout_width="275dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:layout_gravity="center"
+            android:background="@drawable/edit_text"
+            android:lines="12"
+            android:hint="@string/masukkan_bahan_skincare"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins"
+            android:padding="10dp"
+            android:layout_marginTop="25dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_scan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cornerRadius="15dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:backgroundTint="@color/slightly_blue"
+            android:layout_marginTop="20dp"
+            android:text="@string/analisis"
+            android:fontFamily="@font/poppinsbold"/>
+    </LinearLayout>
+</FrameLayout>

@@ -36,4 +36,15 @@
     <string name="login_error">Login Gagal. Silahkan Coba Lagi</string>
     <string name="register_success">Selamat, Akun Berhasil Dibuat</string>
     <string name="register_error">Gagal Register. Silahkan Coba Lagi</string>
+    <string name="masukkan_bahan_skincare">Masukkan bahan skincare</string>
+    <string name="hai">Hai,</string>
+    <string name="username">John Doe</string>
+    <string name="rekomendasi_produk">Rekomendasi Produk</string>
+    <string name="lihat_semua">Lihat Semua</string>
+    <string name="riwayat">Riwayat</string>
+    <string name="keluar">Keluar</string>
+    <string name="tips_and_trick">Tips and Trick</string>
+    <string name="sambutan_suggestion">Lakukan cara ini apabila kamu ingin terhindar dari fungal acne</string>
+    <string name="mencuci_muka">Mencuci Muka</string>
+    <string name="bilas_wajah_hingga_bersih">Bilas wajah hingga bersih</string>
 </resources>

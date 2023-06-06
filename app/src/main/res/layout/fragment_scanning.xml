@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragment.ScanningFragment"
+    android:background="@color/white"
+    android:paddingStart="25dp"
+    android:paddingEnd="25dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        tools:ignore="UselessParent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppinsbold"
+            android:text="@string/scanning_bahan"
+            android:textAlignment="center"
+            android:textColor="@color/slightly_blue"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/text_scanning"
+            android:textAlignment="center"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_camera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/baseline_add_a_photo_24"
+                style="?attr/floatingActionButtonSmallStyle"
+                android:contentDescription="@string/add_a_photo"
+                android:layout_margin="10dp"
+                app:backgroundTint="@color/slightly_blue"
+                app:tint="@color/white"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_gallery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/baseline_insert_photo_24"
+                style="?attr/floatingActionButtonSmallStyle"
+                android:contentDescription="@string/add_a_photo"
+                android:layout_margin="10dp"
+                app:backgroundTint="@color/slightly_blue"
+                app:tint="@color/white"/>
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center"
+            android:background="@drawable/border"
+            android:contentDescription="@string/detail_photo" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_scan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cornerRadius="15dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:backgroundTint="@color/slightly_blue"
+            android:layout_marginTop="20dp"
+            android:text="@string/scan"
+            android:fontFamily="@font/poppinsbold"/>
+
+    </LinearLayout>
+
+</FrameLayout>

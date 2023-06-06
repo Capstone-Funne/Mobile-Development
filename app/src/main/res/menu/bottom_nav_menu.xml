@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/baseline_home_24"
+        android:title="@string/beranda" />
+    <item
+        android:id="@+id/analysisFragment"
+        android:icon="@drawable/baseline_insights_24"
+        android:title="@string/analisis" />
+    <item
+        android:id="@+id/scanningFragment"
+        android:icon="@drawable/baseline_camera_24"
+        android:title="@string/pindai" />
+    <item
+        android:id="@+id/suggestionFragment"
+        android:icon="@drawable/baseline_lightbulb_24"
+        android:title="@string/saran" />
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/baseline_person_24"
+        android:title="@string/profile" />
+</menu>

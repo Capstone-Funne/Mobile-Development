@@ -8,7 +8,7 @@
     <style name="Theme.Funne" parent="Base.Theme.Funne" />
 
     <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
-        <item name="android:color">@color/white</item>
+        <item name="android:color">@color/pale_cerulean</item>
     </style>
 
     <style name="RoundedImageView">

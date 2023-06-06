@@ -9,6 +9,13 @@
     android:layout_marginStart="25dp"
     android:layout_marginEnd="25dp">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -17,22 +24,24 @@
         android:text="@string/membuat_akun"
         android:textColor="@color/slightly_blue"
         android:textSize="28sp"
-        android:layout_marginTop="130dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@id/sambutan"
+        android:layout_marginTop="30dp"
+        />
 
     <TextView
         android:id="@+id/sambutan"
-        android:layout_width="320dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins"
         android:gravity="center_horizontal"
         android:text="@string/sambutan_register"
         android:textSize="17sp"
+        android:layout_marginBottom="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintBottom_toTopOf="@+id/etNama" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/etNama"
@@ -41,14 +50,14 @@
         app:startIconDrawable="@drawable/baseline_person_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sambutan"
+        app:layout_constraintBottom_toTopOf="@id/etEmail"
         app:boxStrokeColor="@color/slightly_blue"
         app:startIconTint="@color/slightly_blue"
         android:textColorHint="@color/grey_text"
         app:hintTextColor="@color/slightly_blue"
-        android:layout_marginTop="25dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="15dp"
         android:hint="@string/nama">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -65,8 +74,8 @@
         app:startIconDrawable="@drawable/baseline_alternate_email_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etNama"
-        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         app:boxStrokeColor="@color/slightly_blue"
@@ -105,8 +114,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            />
+            android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -132,7 +140,7 @@
         android:id="@+id/tv_tidak_punya_akun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/poppins"
         android:gravity="center"
         android:text="@string/sudah_punya_akun"
@@ -148,7 +156,7 @@
         android:id="@+id/tv_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/poppinsbold"
         android:text="@string/masuk"
         android:textColor="@color/slightly_blue"
