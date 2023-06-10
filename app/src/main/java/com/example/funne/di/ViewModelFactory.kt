@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.funne.data.repository.FunneRepository
 import com.example.funne.ui.viewmodel.LoginViewModel
+import com.example.funne.ui.viewmodel.ProfileViewModel
 import com.example.funne.ui.viewmodel.RegisterViewModel
 
 class ViewModelFactory private constructor(private val funneRepository: FunneRepository) : ViewModelProvider.Factory {
@@ -13,6 +14,7 @@ class ViewModelFactory private constructor(private val funneRepository: FunneRep
         return when {
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> LoginViewModel(funneRepository) as T
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> RegisterViewModel(funneRepository) as T
+            modelClass.isAssignableFrom(ProfileViewModel::class.java) -> ProfileViewModel(funneRepository) as T
             else -> throw IllegalArgumentException("Unknown ViewModel class")
         }
     }

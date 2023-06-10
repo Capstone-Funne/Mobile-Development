@@ -5,56 +5,105 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
 import com.example.funne.R
+import com.example.funne.data.model.FunneSession
+import com.example.funne.data.network.Result
+import com.example.funne.databinding.FragmentProfileBinding
+import com.example.funne.di.ViewModelFactory
+import com.example.funne.ui.viewmodel.ProfileViewModel
+import kotlinx.coroutines.launch
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProfileFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentProfileBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private val profileViewModel by viewModels<ProfileViewModel> {
+        ViewModelFactory.getInstance(requireActivity())
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+    ): View {
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProfileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProfileFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val token = FunneSession(requireContext()).getToken()
+        binding.apply {
+            lifecycleScope.launch {
+                if (token != null) {
+                    profileViewModel.getProfile(token = token).observe(viewLifecycleOwner){
+                        if (it != null) {
+                            when (it) {
+                                is Result.Loading -> {
+                                    binding.progressbar.visibility = View.VISIBLE
+                                }
+
+                                is Result.Success -> {
+                                    binding.progressbar.visibility = View.GONE
+
+                                    tvNameProfile.text = it.data?.name
+                                    tvGenderProfile.text = it.data?.gender.toString()
+                                    Glide.with(this@ProfileFragment)
+                                        .load(it.data?.picture)
+                                        .circleCrop()
+                                        .into(ivProfile)
+                                }
+
+                                is Result.Error -> {
+                                    binding.progressbar.visibility = View.GONE
+
+                                }
+
+                                else -> {}
+                            }
+                        }
+                    }
                 }
             }
+        }
+
+
+
+
+
+        /*
+        val intent = Intent()
+        val id = intent.getStringExtra(EXTRA_ID)
+        if (id!= null) {
+            lifecycleScope.launch {
+                profileViewModel.getProfile()
+            }
+            profileViewModel.getProfile().observe(this) { ProfileResponse ->
+                with(binding) {
+                    tvNameProfile.text = ProfileResponse.name
+                    tvGenderProfile.text = ProfileResponse.gender.toString()
+                    Glide.with(this@ProfileFragment)
+                        .load(ProfileResponse.picture)
+                        .circleCrop()
+                        .into(ivProfile)
+                }
+            }
+
+
+        }
+
+         */
     }
+
+    /*
+        companion object {
+            const val EXTRA_ID = "extra_id"
+        }
+
+
+     */
+
 }
