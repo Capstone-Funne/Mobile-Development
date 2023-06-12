@@ -9,6 +9,7 @@ import com.example.funne.data.model.AnalysisResponse
 import com.example.funne.data.model.LoginResponse
 import com.example.funne.data.model.ProfileResponse
 import com.example.funne.data.model.ScanningResponse
+import com.example.funne.data.model.SuggestionResponse
 import com.example.funne.data.network.ApiService
 import com.example.funne.data.network.Result
 import com.example.funne.data.request.AnalysisRequest
@@ -74,6 +75,17 @@ class FunneRepository(private val apiService: ApiService) {
         emit(Result.Loading)
         try {
             val response = apiService.analyzeImage(token, analysisRequest)
+            emit(Result.Success(response.data.orEmpty()))
+        } catch (e: Exception) {
+            Log.d(ContentValues.TAG, "On Failure : ${e.message}")
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
+    suspend fun solution(token: String): LiveData<Result<List<SuggestionResponse?>>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.solution("Bearer $token")
             emit(Result.Success(response.data.orEmpty()))
         } catch (e: Exception) {
             Log.d(ContentValues.TAG, "On Failure : ${e.message}")

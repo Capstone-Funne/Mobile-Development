@@ -9,6 +9,7 @@ import com.example.funne.ui.viewmodel.LoginViewModel
 import com.example.funne.ui.viewmodel.ProfileViewModel
 import com.example.funne.ui.viewmodel.RegisterViewModel
 import com.example.funne.ui.viewmodel.ScanningViewModel
+import com.example.funne.ui.viewmodel.SuggestionViewModel
 
 class ViewModelFactory private constructor(private val funneRepository: FunneRepository) : ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
@@ -19,6 +20,7 @@ class ViewModelFactory private constructor(private val funneRepository: FunneRep
             modelClass.isAssignableFrom(ProfileViewModel::class.java) -> ProfileViewModel(funneRepository) as T
             modelClass.isAssignableFrom(ScanningViewModel::class.java) -> ScanningViewModel(funneRepository) as T
             modelClass.isAssignableFrom(AnalysisViewModel::class.java) -> AnalysisViewModel(funneRepository) as T
+            modelClass.isAssignableFrom(SuggestionViewModel::class.java) -> SuggestionViewModel(funneRepository) as T
             else -> throw IllegalArgumentException("Unknown ViewModel class")
         }
     }

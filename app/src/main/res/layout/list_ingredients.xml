@@ -27,7 +27,7 @@
             card_view:layout_constraintStart_toEndOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
-            tools:text="Name" />
+            android:text="@string/name_ingredients" />
 
         <TextView
             android:id="@+id/tv_description"
