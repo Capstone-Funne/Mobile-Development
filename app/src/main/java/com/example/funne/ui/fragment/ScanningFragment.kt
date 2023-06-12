@@ -17,14 +17,30 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.example.funne.R
+import com.example.funne.data.model.FunneSession
+import com.example.funne.data.network.Result
 import com.example.funne.databinding.FragmentScanningBinding
+import com.example.funne.di.ViewModelFactory
 import com.example.funne.ui.activity.CameraActivity
+import com.example.funne.ui.viewmodel.ScanningViewModel
 import com.example.funne.util.rotateFile
 import com.example.funne.util.uriToFile
+import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 
 class ScanningFragment : Fragment() {
     private lateinit var binding: FragmentScanningBinding
+    private var getFile: File? = null
+    private val scanningViewModel by viewModels<ScanningViewModel> {
+        ViewModelFactory.getInstance(requireActivity())
+    }
 
     companion object {
         const val CAMERA_X_RESULT = 200
@@ -76,6 +92,8 @@ class ScanningFragment : Fragment() {
             )
         }
 
+        binding.progressbar.visibility = View.GONE
+
         binding.btnCamera.setOnClickListener { startCameraX() }
         binding.btnGallery.setOnClickListener { startGallery() }
         binding.btnScan.setOnClickListener { uploadImage() }
@@ -95,7 +113,58 @@ class ScanningFragment : Fragment() {
     }
 
     private fun uploadImage() {
-        Toast.makeText(requireContext(), "Fitur ini belum tersedia", Toast.LENGTH_SHORT).show()
+        if (getFile != null) {
+            val file = getFile as File
+
+            val requestImageFile = file.asRequestBody("image/jpeg".toMediaType())
+            val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
+                "image",
+                file.name,
+                requestImageFile,
+            )
+
+            val token = FunneSession(requireContext()).getToken()
+            lifecycleScope.launch {
+                scanningViewModel.uploadImage("Bearer $token", imageMultipart)
+                    .observe(viewLifecycleOwner) {
+                        if (it != null) {
+                            when (it) {
+                                is Result.Loading -> {
+                                    binding.progressbar.visibility = View.VISIBLE
+                                }
+
+                                is Result.Success -> {
+                                    binding.progressbar.visibility = View.GONE
+                                    val actions = it.data?.let { response ->
+                                        ScanningFragmentDirections.actionScanningFragmentToAnalysisFragment().setResponse(response)
+                                    }
+                                    if (actions != null) {
+                                        findNavController().navigate(actions)
+                                    }
+                                    Toast.makeText(
+                                        requireContext(),
+                                        getString(R.string.image_uploaded),
+                                        Toast.LENGTH_SHORT,
+                                    ).show()
+                                }
+
+                                is Result.Error -> {
+                                    binding.progressbar.visibility = View.GONE
+                                    Toast.makeText(
+                                        requireContext(),
+                                        getString(R.string.error_upload_image),
+                                        Toast.LENGTH_SHORT,
+                                    ).show()
+                                }
+
+                                else -> {}
+                            }
+                        } else {
+                            Toast.makeText(requireContext(), "Silakan masukkan berkas gambar terlebih dahulu.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+            }
+        }
     }
 
     private val launcherIntentCameraX = registerForActivityResult(
@@ -113,6 +182,7 @@ class ScanningFragment : Fragment() {
 
             myFile?.let { file ->
                 rotateFile(file, isBackCamera)
+                getFile = file
                 binding.ivImage.setImageBitmap(BitmapFactory.decodeFile(file.path))
             }
         }
@@ -125,6 +195,7 @@ class ScanningFragment : Fragment() {
             val selectedImg = result.data?.data as Uri
             selectedImg.let { uri ->
                 val myFile = uriToFile(uri, requireContext())
+                getFile = myFile
                 binding.ivImage.setImageURI(uri)
             }
         }

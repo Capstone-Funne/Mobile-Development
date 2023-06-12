@@ -29,7 +29,6 @@
             android:fontFamily="@font/poppins"
             android:gravity="center_horizontal"
             android:text="@string/sambutan_fragment"
-
             android:layout_marginTop="5dp"
             />
 
@@ -49,10 +48,11 @@
             android:padding="10dp"
             android:layout_marginTop="25dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_scan"
+            android:id="@+id/btn_analisis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cornerRadius="15dp"
@@ -63,4 +63,12 @@
             android:text="@string/analisis"
             android:fontFamily="@font/poppinsbold"/>
     </LinearLayout>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:indicatorColor="@color/slightly_blue"
+        android:layout_gravity="center" />
 </FrameLayout>

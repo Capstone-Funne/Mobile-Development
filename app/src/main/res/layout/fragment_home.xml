@@ -45,15 +45,6 @@
             android:scaleType="centerCrop"
             tools:src="@drawable/baseline_person_24" />
 
-        <com.google.android.material.search.SearchBar
-            android:id="@id/search_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_user"
-            android:backgroundTint="@color/material_dynamic_neutral90" />
-
         <TextView
             android:id="@+id/rekomendasi_produk"
             android:layout_width="wrap_content"
@@ -64,19 +55,8 @@
             android:textColor="@color/slightly_blue"
             android:textSize="17sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/search_bar" />
+            app:layout_constraintTop_toBottomOf="@+id/name" />
 
-        <TextView
-            android:id="@+id/lihat_semua"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/lihat_semua"
-            android:textColor="@color/slightly_blue"
-            android:fontFamily="@font/poppins"
-            android:textSize="13sp"
-            android:layout_marginTop="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/search_bar" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_recommend_products"

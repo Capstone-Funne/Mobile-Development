@@ -59,31 +59,9 @@
                     android:fontFamily="@font/poppinsbold"
                     android:textColor="@color/slightly_blue" />
 
-                <TextView
-                    android:id="@+id/tv_gender_profile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="@string/jenis_kelamin"
-                    android:textSize="14sp"
-                    android:textAlignment="center"
-                    android:fontFamily="@font/poppins" />
-
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_edit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cornerRadius="15dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            app:backgroundTint="@color/slightly_blue"
-            android:layout_marginTop="20dp"
-            android:text="@string/edit_profile"
-            android:fontFamily="@font/poppinsbold"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_history"
@@ -98,13 +76,13 @@
             android:fontFamily="@font/poppinsbold"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cornerRadius="15dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            app:backgroundTint="@color/slightly_blue"
+            app:backgroundTint="@color/coral_red"
             android:layout_marginTop="20dp"
             android:text="@string/keluar"
             android:fontFamily="@font/poppinsbold"/>
