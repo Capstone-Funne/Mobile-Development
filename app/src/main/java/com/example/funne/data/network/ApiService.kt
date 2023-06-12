@@ -7,6 +7,7 @@ import com.example.funne.data.result.AnalysisResult
 import com.example.funne.data.result.GeneralResult
 import com.example.funne.data.result.ProfileResult
 import com.example.funne.data.result.ScanningResult
+import com.example.funne.data.result.SuggestionResult
 import okhttp3.MultipartBody
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -48,4 +49,10 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Body analysisRequest: AnalysisRequest,
     ): AnalysisResult
+
+    @Headers("Content-Type: application/json")
+    @GET("/api/v1/solutions")
+    suspend fun solution(
+        @Header("Authorization") token: String,
+    ): SuggestionResult
 }

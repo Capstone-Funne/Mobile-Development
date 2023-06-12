@@ -28,8 +28,6 @@ class ResultFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         val count = arguments?.getString("count")
         val ingredients = arguments?.getParcelableArrayList<AnalysisResponse>("ingredients")
-        Log.d(ContentValues.TAG, count.toString())
-        Log.d(ContentValues.TAG, ingredients.toString())
         binding.apply {
             countIngredients.text = count
             rvIngredients.layoutManager = LinearLayoutManager(context)

@@ -58,4 +58,7 @@
     <string name="nama_ingredients">Nama Ingredients</string>
     <string name="bahan_ke">Bahan Ke -</string>
     <string name="scan_ulang">Scan Ulang</string>
+    <string name="name_ingredients">Name Ingredients</string>
+    <string name="solusi">Solusi</string>
+    <string name="deskripsi_solusi">Deskripsi Solusi</string>
 </resources>
