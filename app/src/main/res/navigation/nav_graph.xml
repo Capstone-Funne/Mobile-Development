@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.funne.ui.fragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/analysisFragment"
+        android:name="com.example.funne.ui.fragment.AnalysisFragment"
+        android:label="fragment_analysis"
+        tools:layout="@layout/fragment_analysis">
+        <argument
+            android:name="response"
+            app:argType="com.example.funne.data.model.ScanningResponse"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/scanningFragment"
+        android:name="com.example.funne.ui.fragment.ScanningFragment"
+        android:label="fragment_scanning"
+        tools:layout="@layout/fragment_scanning" >
+        <action
+            android:id="@+id/action_scanningFragment_to_analysisFragment"
+            app:destination="@id/analysisFragment"
+            app:popUpToInclusive="true"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/nav_graph"/>
+    </fragment>
+    <fragment
+        android:id="@+id/suggestionFragment"
+        android:name="com.example.funne.ui.fragment.SuggestionFragment"
+        android:label="fragment_suggestion"
+        tools:layout="@layout/fragment_suggestion" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.funne.ui.fragment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_historyFragment"
+            app:destination="@id/historyFragment"
+            app:popUpToInclusive="true"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/profileFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.funne.ui.fragment.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+
+</navigation>
