@@ -61,4 +61,12 @@
     <string name="name_ingredients">Name Ingredients</string>
     <string name="solusi">Solusi</string>
     <string name="deskripsi_solusi">Deskripsi Solusi</string>
+    <string name="riwayat_scanning">Riwayat Scanning</string>
+    <string name="beberapa_hasil_scanning_yang_pernah_anda_lakukan">Beberapa hasil scanning yang pernah anda lakukan</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="content_description_media">Deskripsi Gambar</string>
+    <string name="history">History</string>
+    <string name="daftar_ingredients">Daftar Ingredients</string>
+    <string name="bahan_skincare">Bahan Skincare</string>
+    <string name="dibuat">Dibuat :</string>
 </resources>

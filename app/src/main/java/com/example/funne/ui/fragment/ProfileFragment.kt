@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.funne.data.model.FunneSession
 import com.example.funne.data.model.LoginResponse
@@ -74,6 +75,11 @@ class ProfileFragment : Fragment() {
                         }
                     }
                 }
+            }
+
+            btnHistory.setOnClickListener {
+                val action = ProfileFragmentDirections.actionProfileFragmentToHistoryFragment()
+                findNavController().navigate(action)
             }
 
             btnLogout.setOnClickListener {

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.funne.data.repository.FunneRepository
 import com.example.funne.ui.viewmodel.AnalysisViewModel
+import com.example.funne.ui.viewmodel.HistoryViewModel
 import com.example.funne.ui.viewmodel.LoginViewModel
 import com.example.funne.ui.viewmodel.ProfileViewModel
 import com.example.funne.ui.viewmodel.RegisterViewModel
@@ -21,6 +22,7 @@ class ViewModelFactory private constructor(private val funneRepository: FunneRep
             modelClass.isAssignableFrom(ScanningViewModel::class.java) -> ScanningViewModel(funneRepository) as T
             modelClass.isAssignableFrom(AnalysisViewModel::class.java) -> AnalysisViewModel(funneRepository) as T
             modelClass.isAssignableFrom(SuggestionViewModel::class.java) -> SuggestionViewModel(funneRepository) as T
+            modelClass.isAssignableFrom(HistoryViewModel::class.java) -> HistoryViewModel(funneRepository) as T
             else -> throw IllegalArgumentException("Unknown ViewModel class")
         }
     }
