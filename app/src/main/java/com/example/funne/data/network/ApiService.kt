@@ -6,6 +6,7 @@ import com.example.funne.data.request.RegisterRequest
 import com.example.funne.data.result.AnalysisResult
 import com.example.funne.data.result.GeneralResult
 import com.example.funne.data.result.HistoryResult
+import com.example.funne.data.result.ProductResult
 import com.example.funne.data.result.ProfileResult
 import com.example.funne.data.result.ScanningResult
 import com.example.funne.data.result.SuggestionResult
@@ -62,4 +63,10 @@ interface ApiService {
     suspend fun history(
         @Header("Authorization") token: String,
     ): HistoryResult
+
+    @Headers("Content-Type: application/json")
+    @GET("/api/v1/products")
+    suspend fun product(
+        @Header("Authorization") token: String,
+    ): ProductResult
 }
