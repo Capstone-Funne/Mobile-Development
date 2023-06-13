@@ -8,6 +8,7 @@ import androidx.lifecycle.liveData
 import com.example.funne.data.model.AnalysisResponse
 import com.example.funne.data.model.HistoryResponse
 import com.example.funne.data.model.LoginResponse
+import com.example.funne.data.model.ProductResponse
 import com.example.funne.data.model.ProfileResponse
 import com.example.funne.data.model.ScanningResponse
 import com.example.funne.data.model.SuggestionResponse
@@ -98,6 +99,17 @@ class FunneRepository(private val apiService: ApiService) {
         emit(Result.Loading)
         try {
             val response = apiService.history("Bearer $token")
+            emit(Result.Success(response.data.orEmpty()))
+        } catch (e: Exception) {
+            Log.d(ContentValues.TAG, "On Failure : ${e.message}")
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
+    suspend fun product(token: String): LiveData<Result<List<ProductResponse?>>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.product("Bearer $token")
             emit(Result.Success(response.data.orEmpty()))
         } catch (e: Exception) {
             Log.d(ContentValues.TAG, "On Failure : ${e.message}")
