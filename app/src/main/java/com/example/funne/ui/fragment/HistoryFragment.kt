@@ -9,16 +9,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.funne.R
 import com.example.funne.data.model.FunneSession
 import com.example.funne.data.network.Result
 import com.example.funne.databinding.FragmentHistoryBinding
 import com.example.funne.di.ViewModelFactory
 import com.example.funne.ui.adapter.HistoryAdapter
-import com.example.funne.ui.adapter.SuggestionAdapter
 import com.example.funne.ui.viewmodel.HistoryViewModel
-import com.example.funne.ui.viewmodel.SuggestionViewModel
 import kotlinx.coroutines.launch
 
 class HistoryFragment : Fragment() {

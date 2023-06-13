@@ -48,7 +48,7 @@
             app:destination="@id/historyFragment"
             app:popUpToInclusive="true"
             app:launchSingleTop="true"
-            app:popUpTo="@+id/nav_graph"/>
+            app:popUpTo="@+id/profileFragment"/>
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
